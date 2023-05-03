@@ -21,3 +21,9 @@ function playRound(playerChoice, computerChoice) {
     return 0;
   }
 }
+
+function generateResultString(result) {
+  if (result === -1) return 'Too bad, you lose!';
+  else if (result === 1) return 'You win!';
+  else return "It's a draw!";
+}
