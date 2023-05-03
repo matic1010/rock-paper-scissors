@@ -5,9 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Rock Paper Scissors</h1>
+    <div id="modal">
+      <div class="modal-content">
+        <h2>Game Over!</h2>
+        <p class="end-result"></p>
+        <button class="reset">New Game</button>
+      </div>
+    </div>
+    <div class="result">
+      <div>
+        <p id="player-choice">❓</p>
+        <p>Player: <span id="player-score">0</span></p>
+      </div>
+      <div>
+        <p id="computer-choice">❓</p>
+        <p>Computer: <span id="computer-score">0</span></p>
+      </div>
+    </div>
     <div class="selection-buttons">
       <button class="selection-button" id="rock">Rock</button>
       <button class="selection-button" id="paper">Paper</button>
