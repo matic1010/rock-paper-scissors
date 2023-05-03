@@ -2,7 +2,7 @@ const choices = ['rock', 'paper', 'scissors'];
 
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * 3);
-  console.log(choices[randomIndex]);
+  return choices[randomIndex];
 }
 
 function playRound(playerChoice, computerChoice) {
@@ -23,7 +23,33 @@ function playRound(playerChoice, computerChoice) {
 }
 
 function generateResultString(result) {
-  if (result === -1) return 'Too bad, you lose!';
-  else if (result === 1) return 'You win!';
+  if (result === -1) return 'Computer wins!';
+  else if (result === 1) return 'Player wins!';
   else return "It's a draw!";
+}
+
+function game() {
+  let count = 1;
+  let playerScore = 0;
+  let computerScore = 0;
+  while (count <= 5) {
+    console.log(`ROUND ${count}`);
+    let playerChoice = '';
+    while (!choices.includes(playerChoice)) {
+      playerChoice = prompt('Rock, paper, or scissors?').toLowerCase();
+    }
+    const computerChoice = getComputerChoice();
+    console.log(
+      `Player chose ${playerChoice} and computer chose ${computerChoice}`
+    );
+    const result = playRound(playerChoice, computerChoice);
+    if (result === 1) playerScore++;
+    if (result === -1) computerScore++;
+    console.log(generateResultString(result));
+    console.log(`Player ${playerScore} - ${computerScore} Computer`);
+    count++;
+  }
+  console.log('---------------------');
+  console.log(`Final Score:`);
+  console.log(`Player ${playerScore} - ${computerScore} Computer`);
 }
