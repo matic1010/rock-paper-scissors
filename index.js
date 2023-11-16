@@ -21,20 +21,37 @@ function playRound () {
   console.log(`Player chose ${playerChoice}, computer chose ${computerChoice}`)
 
   if(playerChoice === "rock") {
-    if(computerChoice === "scissors") return "Player wins"
-    if(computerChoice === "paper") return "Computer wins"
-    return "It's a draw"
+    if(computerChoice === "scissors") return 1
+    if(computerChoice === "paper") return -1
+    return 0
   }
 
   if(playerChoice === "paper") {
-    if(computerChoice === "rock") return "Player wins"
-    if(computerChoice === "scissors") return "Computer wins"
-    return "It's a draw"
+    if(computerChoice === "rock") return 1
+    if(computerChoice === "scissors") return -1
+    return 0
   }
 
   if(playerChoice === "scissors") {
-    if(computerChoice === "paper") return "Player wins"
-    if(computerChoice === "rock") return "Computer wins"
-    return "It's a draw"
+    if(computerChoice === "paper") return 1
+    if(computerChoice === "rock") return -1
+    return 0
   }
+}
+
+function game() {
+  let computerScore = 0
+  let playerScore = 0
+
+  for(let i = 1; i <= 5; i++) {
+    console.log('ROUND ' + i)
+    const result = playRound();
+    if(result === 1) playerScore++;
+    if(result === -1) computerScore++;
+    console.log(`PLAYER ${playerScore} - ${computerScore} COMPUTER`)
+    console.log("------------------")
+  }
+
+  console.log('FINAL RESULT:')
+  console.log(`PLAYER ${playerScore} - ${computerScore} COMPUTER`)
 }
