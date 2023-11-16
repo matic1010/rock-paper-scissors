@@ -1,5 +1,24 @@
 const CHOICES = ['rock', 'paper', 'scissors']
 
+const selectionButtons = document.querySelectorAll('.selection-button')
+const resultDisplay = document.getElementById("result")
+const playerChoiceDisplay = document.getElementById("player-choice")
+const computerChoiceDisplay = document.getElementById("computer-choice")
+
+selectionButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const selection = e.target.dataset.selection
+    const result = playRound(selection)
+    if(result === 1) {
+      resultDisplay.textContent = "Player wins!"
+    } else if(result === -1) {
+      resultDisplay.textContent = "Computer wins!"
+    } else {
+      resultDisplay.textContent = "It's a draw!"
+    }
+  })
+})
+
 function getComputerChoice () {
   const randomIndex = Math.floor(Math.random() * CHOICES.length)
   return CHOICES[randomIndex]
@@ -14,11 +33,11 @@ function getPlayerChoice () {
   return choice
 }
 
-function playRound () {
+function playRound (playerChoice) {
   const computerChoice = getComputerChoice()
-  const playerChoice = getPlayerChoice()
 
-  console.log(`Player chose ${playerChoice}, computer chose ${computerChoice}`)
+  playerChoiceDisplay.textContent = playerChoice
+  computerChoiceDisplay.textContent = computerChoice
 
   if(playerChoice === "rock") {
     if(computerChoice === "scissors") return 1
@@ -37,21 +56,4 @@ function playRound () {
     if(computerChoice === "rock") return -1
     return 0
   }
-}
-
-function game() {
-  let computerScore = 0
-  let playerScore = 0
-
-  for(let i = 1; i <= 5; i++) {
-    console.log('ROUND ' + i)
-    const result = playRound();
-    if(result === 1) playerScore++;
-    if(result === -1) computerScore++;
-    console.log(`PLAYER ${playerScore} - ${computerScore} COMPUTER`)
-    console.log("------------------")
-  }
-
-  console.log('FINAL RESULT:')
-  console.log(`PLAYER ${playerScore} - ${computerScore} COMPUTER`)
 }
